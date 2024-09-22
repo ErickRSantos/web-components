@@ -1,0 +1,96 @@
+:root {
+  --color1: #e9ebed;
+  --color2: #1b304b;
+  --color3: #25456b;
+  --color4: #2F598B;
+  --color5: #396DAC;
+  --color6: #4B82C4;
+  --color7: #212121;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+
+  font-family: JetBrains Mono;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  height: auto;
+  width: 400px;
+  
+  border: 4px solid var(--color6);
+  border-radius: 3px;
+  background-color: var(--color1) ;
+  box-shadow: 10px 10px var(--color6);
+  
+}
+.conteudo{
+  margin: 35px;
+}
+.titulo{
+  color: var(--color7);
+  padding: 10px 0px 10px 0px;
+  text-align: left;
+}
+.subtitulo{
+  color: var(--color7);
+  font-size: 12pt;
+}
+.dados-usuario{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 20px 0px 20px 0px;
+
+  p{
+    padding: 5px 0px 0px 0px;
+  }
+
+  #input-email, #input-senha{
+    padding: 5px;
+    color: var(--color7);
+    height: 30px;
+    border: 2px solid var(--color3);
+    border-radius: 3px;
+  }
+  a{
+    text-decoration: none;
+    color: var(--color7);
+    text-align: right;
+    font-size: 10pt;
+    padding: 5px 0px 0px 0px;
+  }
+  .botao-login{
+    margin: 10px 0px 10px 0px;
+    height: 30px;
+
+    background-color: var(--color2);
+    border: none;
+    border-radius: 3px;
+    color: var(--color1);
+  }
+}
+.metodos-login{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  p{
+    color: var(--color7);
+    text-align: center;
+  }
+  align-items: center;
+  i{
+    color: var(--color7);
+    padding: 0px 5px 0px 5px;
+    font-size: 20pt;
+  }
+}
+
