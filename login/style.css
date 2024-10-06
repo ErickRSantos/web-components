@@ -54,7 +54,7 @@ body{
     padding: 5px 0px 0px 0px;
   }
 
-  #input-email, #input-senha{
+  #inputemail, #inputsenha{
     padding: 5px 10px 5px 10px;
     color: var(--color7);
     height: 30px;

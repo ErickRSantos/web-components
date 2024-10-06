@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script
+      src="https://kit.fontawesome.com/0d68cacbc5.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
 <body>
-  Hello World
+  <div class="container">
+    <aside class="sidebar">
+    <div class="displayUser">
+      <!-- <img src="" alt=""> -->
+      <span>
+        <i class="fa-solid fa-user"></i>
+        <p class="username">Nome do usuário</p>
+      </span>
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    </div>
+    
+    </aside>
+    <div class="dashboard">
+    </div>
+  </div>
+
+
+
+  <script type="module" >
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyAT2K-Yg0xuv076nUEeRSnWEJ8yqdby06I",
+        authDomain: "web-components-aa219.firebaseapp.com",
+        projectId: "web-components-aa219",
+        storageBucket: "web-components-aa219.appspot.com",
+        messagingSenderId: "518457399459",
+        appId: "1:518457399459:web:604ccdcf149b94ccf44716",
+      };
+      
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+      initializeApp(firebaseConfig);
+      const user = getAuth();
+      console.log(user);
+  </script>
 </body>
 </html>

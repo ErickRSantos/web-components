@@ -1,55 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/0d68cacbc5.js" crossorigin="anonymous"></script>
-</head>
-<body>
-  <div class="container">
-    <div class="conteudo">
-      <h1 class="titulo">>Seja bem-vindo!</h1>
-      <h2 class="subtitulo">Para acessar a página inicial, realize seu login.</h2>
-      <div class="dados-usuario">
-        <p>Email</p>
-        <input type="email" name="input-email" id="input-email" placeholder="Digite seu email">
-        <p>Senha</p>
-        <input type="password" name="input-senha" id="input-senha" placeholder="Digite sua senha">
-        <a href="#">Esqueceu sua senha?</a>
-        <input type="button" value="login" class="botao-login">
-      </div>
-      <div class="metodos-login">
-        <p>Outras formas de login</p>
-        <div class="metodos">
-          <i class="fa-brands fa-google"></i>
-          <i class="fa-brands fa-github"></i>
-          <i class="fa-brands fa-apple"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/0d68cacbc5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="conteudo">
+        <h1 class="titulo">>Seja bem-vindo!</h1>
+        <h2 class="subtitulo">
+          Para acessar a página inicial, realize seu login.
+        </h2>
+        <div class="dados-usuario">
+          <p>Email</p>
+          <input
+            type="email"
+            name="input-email"
+            id="inputemail"
+            placeholder="Digite seu email"
+          />
+          <p>Senha</p>
+          <input
+            type="password"
+            name="input-senha"
+            id="inputsenha"
+            placeholder="Digite sua senha"
+          />
+          <a href="#">Esqueceu sua senha?</a>
+          <button class="botao-login" id="botaoLogin">Login</button>
+        </div>
+        <div class="metodos-login">
+          <p>Outras formas de login</p>
+          <div class="metodos">
+            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-github"></i>
+            <i class="fa-brands fa-apple"></i>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyAT2K-Yg0xuv076nUEeRSnWEJ8yqdby06I",
-      authDomain: "web-components-aa219.firebaseapp.com",
-      projectId: "web-components-aa219",
-      storageBucket: "web-components-aa219.appspot.com",
-      messagingSenderId: "518457399459",
-      appId: "1:518457399459:web:604ccdcf149b94ccf44716"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  </script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      
+    </script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyAT2K-Yg0xuv076nUEeRSnWEJ8yqdby06I",
+        authDomain: "web-components-aa219.firebaseapp.com",
+        projectId: "web-components-aa219",
+        storageBucket: "web-components-aa219.appspot.com",
+        messagingSenderId: "518457399459",
+        appId: "1:518457399459:web:604ccdcf149b94ccf44716",
+      };
+      
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-</body>
+      const autenticar = async () => {
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email.value, senha.value)
+         .then((userCredential) => {
+           const user = userCredential.user;
+           window.alert("Conectado");
+           window.location.href = "../index.html";
+         })
+         .catch((error) => {
+           const errorCode = error.code;
+           const errorMessage = error.message;
+           window.alert("Email ou senha invalidos")
+         });
+    
+      }
+      const monitorAuthState = async () => {
+        onAuthStateChanged(auth, user => {
+          if(user) {
+            console.log(user);
+          }
+          else {
+            window.alert("Não foi possível realizar o login")
+          }
+        });
+      }
+      const sair = async () => {
+        await signOut(auth);
+      }
+      const app = initializeApp(firebaseConfig);
+
+      const botaoLogin = document.getElementById("botaoLogin");
+      botaoLogin.addEventListener("click", autenticar);
+      const email = document.getElementById("inputemail");
+      const senha = document.getElementById("inputsenha");
+       
+    </script>
+  </body>
 </html>
